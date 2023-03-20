@@ -8,7 +8,6 @@ export async function userStatus(){
         if(!response.data) response.data = {success: false, message: 'Token missing!'}
         return response.data;
     } catch (error) {
-        console.log("🚀 ~ file: checkStatus.js:11 ~ userStatus ~ error:", error)
         if(!error.response.data) error.response.data = {success: false, message: 'Token missing!'}
         return error.response.data
     }
