@@ -31,7 +31,7 @@ const handleSubmit = async (e) => {
     }
     try {
 
-      let response = await axios.post('http://localhost:8080/protected/events', newEvent, {
+      let response = await axios.post('https://event-calender-backend-production.up.railway.app/protected/events', newEvent, {
         withCredentials: true
       })
       setMessage('Event erfolgreich erstellt!')

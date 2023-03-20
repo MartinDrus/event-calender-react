@@ -17,7 +17,7 @@ const Login = () => {
       try {
 
         const response = await axios.post(
-          'https://event-calender-backend-production.up.railway.app/auth/login',
+          'https://event-calender-react.vercel.app/auth/login',
           userLogin,
           {withCredentials: true}
         );
