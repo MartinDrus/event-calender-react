@@ -23,7 +23,7 @@ const handleSubmit = async (e) => {
     }
 
     try {
-      const response = await axios.post('http://localhost:8080/auth/register', newUser, {
+      const response = await axios.post('https://event-calender-backend-production.up.railway.app/auth/register', newUser, {
         withCredentials: true
       });
       //navigate('/login',{})
