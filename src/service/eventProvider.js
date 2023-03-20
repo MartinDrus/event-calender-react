@@ -4,7 +4,7 @@ import axios from "axios";
 export async function getAllEvents(){
 
     try {
-        let response = await axios.get('https://event-calender-backend-production.up.railway.app/auth/events/all',{
+        let response = await axios.get('https://event-calender-react.vercel.app/auth/events/all',{
             withCredentials: true
         })
         return response.data;
@@ -18,7 +18,7 @@ export async function getAllEvents(){
 export async function getEventById(id){
 
     try {
-        let response = await axios.get(`https://event-calender-backend-production.up.railway.app/auth/eventdetails/${id}`,{
+        let response = await axios.get(`https://event-calender-react.vercel.app/auth/eventdetails/${id}`,{
             withCredentials: true
         });
         return response.data;
@@ -32,7 +32,7 @@ export async function getEventById(id){
 export async function attendToEvent(eventId){
 
     try {
-        let response = await axios.get(`https://event-calender-backend-production.up.railway.app/auth/events/attend/${eventId}`,{
+        let response = await axios.get(`https://event-calender-react.vercel.app/auth/events/attend/${eventId}`,{
             withCredentials: true
         })
         return response.data;
@@ -44,7 +44,7 @@ export async function attendToEvent(eventId){
 
 export async function cancelUserEvent(eventId) {
     try {
-        let response = await axios.get(`https://event-calender-backend-production.up.railway.app/auth/events/cancel/${eventId}`,{
+        let response = await axios.get(`https://event-calender-react.vercel.app/auth/events/cancel/${eventId}`,{
             withCredentials: true
         })
         return response.data;
@@ -57,7 +57,7 @@ export async function cancelUserEvent(eventId) {
 export async function getUserEventsByTokenId(){
 
     try {
-        let response = await axios.get(`https://event-calender-backend-production.up.railway.app/auth/userevents`,{
+        let response = await axios.get(`https://event-calender-react.vercel.app/auth/userevents`,{
             withCredentials: true
         })
         return response.data;
@@ -70,7 +70,7 @@ export async function getUserEventsByTokenId(){
 export async function getEventPreview(){
 
     try {
-        let response = await axios.get(`https://event-calender-backend-production.up.railway.app/auth/eventpreview`,{
+        let response = await axios.get(`https://event-calender-react.vercel.app/auth/eventpreview`,{
             withCredentials: true
         })
         return response.data;
@@ -82,7 +82,7 @@ export async function getEventPreview(){
 
 export async function userLogout(){
     try {
-        let response = await axios.get(`https://event-calender-backend-production.up.railway.app/auth/logout`,{
+        let response = await axios.get(`https://event-calender-react.vercel.app/auth/logout`,{
             withCredentials: true
         });
 
