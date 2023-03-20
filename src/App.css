@@ -1,0 +1,520 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+nav {
+  background-color: #6a7efc;
+  height: 70px;
+}
+
+.navbar-desktop {
+  display: none;
+}
+
+#menuToggle {
+  display: block;
+  padding: 1.5rem;
+  z-index: 1;
+  user-select: none;
+}
+
+#menuToggle a {
+  text-decoration: none;
+  color: #232323;
+
+  transition: color 0.3s ease;
+}
+
+#menuToggle a:hover {
+  color: tomato;
+}
+
+#menuToggle input {
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  cursor: pointer;
+
+  opacity: 0; /* hide this */
+  z-index: 2; /* and place it over the hamburger */
+
+  -webkit-touch-callout: none;
+}
+
+/*
+ * Just a quick hamburger
+ */
+#menuToggle span {
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+
+  background: #edf2f6;
+  border-radius: 3px;
+
+  z-index: 1;
+
+  transform-origin: 4px 0px;
+
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+    background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+}
+
+#menuToggle span:first-child {
+  transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2) {
+  transform-origin: 0% 100%;
+}
+
+/* 
+ * Transform all the slices of hamburger
+ * into a crossmark.
+ */
+#menuToggle input:checked ~ span {
+  opacity: 1;
+  transform: rotate(45deg) translate(-2px, -1px);
+  background: #232323;
+}
+
+/*
+ * But let's hide the middle one.
+ */
+#menuToggle input:checked ~ span:nth-last-child(3) {
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+/*
+ * Ohyeah and the last one should go the other direction
+ */
+#menuToggle input:checked ~ span:nth-last-child(2) {
+  transform: rotate(-45deg) translate(0, -1px);
+}
+
+/*
+ * Make this absolute positioned
+ * at the top left of the screen
+ */
+#menu {
+  position: absolute;
+  width: 300px;
+  margin: -100px 0 0 -50px;
+  padding: 50px;
+  padding-top: 125px;
+
+  background: #edf2f6;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  /* to stop flickering of text in safari */
+
+  transform-origin: 0% 0%;
+  transform: translate(-100%, 0);
+
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+}
+
+#menu li {
+  padding: 10px 0;
+  font-size: 22px;
+}
+
+/*
+ * And let's slide it in from the left
+ */
+#menuToggle input:checked ~ ul {
+  transform: none;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem 4rem;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+}
+
+.login,
+.register,
+.event-erstellen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h2 {
+  text-align: center;
+  padding-top: 2rem;
+  font-weight: 100;
+}
+
+input {
+  margin-bottom: 1.5rem;
+  height: 30px;
+  width: 100%;
+  padding: 1rem 1rem 1rem 0.3rem;
+}
+
+.register-button,
+.login-button {
+  width: 100px;
+  padding: 0;
+}
+
+.kalender {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+label {
+  text-align: left;
+  display: inline;
+  width: 100%;
+  margin-bottom: 0.3rem;
+}
+
+textarea {
+  width: 100%;
+  height: 150px;
+  margin-bottom: 1rem;
+  padding: 0.3rem 1rem 1rem 0.3rem;
+  font-family: sans-serif;
+}
+
+.day {
+  background-color: #edf2f6;
+  width: 300px;
+  min-height: 200px;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 3px;
+  box-shadow: 23px 23px 46px #dadfe2, -23px -23px 46px #ffffff;
+  padding: 2rem;
+}
+
+.day button {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-color: #edf2f6;
+  cursor: pointer;
+}
+
+.event-title {
+  font-weight: 100;
+  padding: 1rem;
+  border-bottom: 1.5px solid rgb(255, 255, 255);
+}
+
+.userAttends{
+  color: red;
+}
+
+.event-title:hover {
+  cursor: pointer;
+  color: #6a7efc;
+}
+
+.detail-view {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-view h2 {
+  font-size: 2rem;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem 4rem;
+  width: 100%;
+  min-width: 400px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.details button {
+  width: fit-content;
+  margin-bottom: 3rem;
+  padding: 0.5rem;
+}
+
+.details p {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+  border-bottom: 2px solid #edf2f6;
+  padding-bottom: 5px;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.kalender-infos {
+  width: 100%;
+  min-width: 350px;
+  max-width: 600px;
+}
+
+.kalender-infos p {
+  display: flex;
+  align-items: center;
+  padding: 0 3rem;
+  margin-bottom: 1rem;
+  font-size: .8rem;
+}
+
+.punkt {
+  min-width: 10px;
+  min-height: 10px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+
+.rot {
+  background-color: #ff5656;
+}
+
+.blau {
+  background-color: #006edc;
+}
+
+/* kalender style ------------------------------------------------------------ */
+
+.react-calendar {
+  width: 100%;
+  min-width: 350px;
+  max-width: 600px;
+  background: white;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.125em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 350px;
+  max-height: 600px;
+  height: 100%;
+  padding: 1.5rem;
+  margin-bottom: 5rem;
+}
+.react-calendar--doubleView {
+  width: 700px;
+}
+.react-calendar--doubleView .react-calendar__viewContainer {
+  display: flex;
+  margin: -0.5em;
+}
+.react-calendar--doubleView .react-calendar__viewContainer > * {
+  width: 50%;
+  margin: 0.5em;
+}
+.react-calendar,
+.react-calendar *,
+.react-calendar *:before,
+.react-calendar *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+.react-calendar button {
+  margin: 0;
+  border: 0;
+  outline: none;
+  height: 50px;
+  border-radius: 50%;
+}
+.react-calendar button:enabled:hover {
+  cursor: pointer;
+}
+.react-calendar__navigation {
+  display: flex;
+  height: 44px;
+  margin-bottom: 1em;
+  width: 100%;
+  max-width: 400px;
+}
+.react-calendar__navigation button {
+  min-width: 44px;
+  background: none;
+}
+.react-calendar__navigation button:disabled {
+  background-color: #f0f0f0;
+}
+.react-calendar__navigation button:enabled:hover,
+.react-calendar__navigation button:enabled:focus {
+  background-color: #e6e6e6;
+}
+.react-calendar__month-view__weekdays {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 0.75em;
+}
+.react-calendar__month-view__weekdays__weekday {
+  padding: 0.5em;
+}
+.react-calendar__month-view__weekNumbers .react-calendar__tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75em;
+  font-weight: bold;
+}
+.react-calendar__month-view__days__day--weekend {
+  color: #ff5656;
+}
+.react-calendar__month-view__days__day--neighboringMonth {
+  color: #757575;
+}
+.react-calendar__year-view .react-calendar__tile,
+.react-calendar__decade-view .react-calendar__tile,
+.react-calendar__century-view .react-calendar__tile {
+  padding: 2em 0.5em;
+}
+.react-calendar__tile {
+  height: 60px !important;
+  max-width: 100%;
+  padding: 10px 10px;
+  background: none;
+  text-align: center;
+  line-height: 16px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.react-calendar__tile:disabled {
+  background-color: #f0f0f0;
+}
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+  background-color: #e6e6e6;
+}
+.react-calendar__tile--now abbr {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #ff5656;
+  color: white;
+}
+.react-calendar__tile--now:enabled:hover,
+.react-calendar__tile--now:enabled:focus {
+  background: #ffffa9;
+}
+.react-calendar__tile--hasActive {
+  background: #76baff;
+}
+.react-calendar__tile--hasActive:enabled:hover {
+  background: #a9d4ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+}
+.react-calendar__tile--hasActive:enabled:focus {
+  background: #a9d4ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+}
+.react-calendar__tile--active abbr {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #006edc;
+  color: white;
+}
+.react-calendar__tile--active:enabled:hover,
+.react-calendar__tile--active:enabled:focus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+}
+
+.marked {
+  margin: auto;
+
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #006edc;
+  color: 006edc;
+}
+
+.markAttending {
+  margin: auto;
+
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: red;
+  color: 006edc;
+}
+.react-calendar--selectRange .react-calendar__tile--hover {
+  background-color: #e6e6e6;
+}
+
+abbr[title] {
+  text-decoration: none;
+  font-size: 0.7rem;
+}
+
+@media screen and (min-width: 1100px) {
+  #menuToggle {
+    display: none;
+  }
+  .navbar-desktop {
+    display: flex;
+    height: 100%;
+  }
+  .navbar-desktop a li {
+    list-style-type: none;
+    padding: 5px;
+  }
+  .navbar-desktop a {
+    text-decoration: none;
+    margin-left: 2rem;
+    color: #edf2f6;
+    display: flex;
+    align-items: center;
+  }
+  .navbar-desktop a li:hover {
+    border-bottom: 3px solid #edf2f6;
+  }
+  .register,
+  .login,
+  .event-erstellen {
+    margin-top: 5rem;
+  }
+}
